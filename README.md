@@ -1,4 +1,4 @@
-# First Application in php
+# First Application in PHP
 
 This is an evaluation for my training.
 
