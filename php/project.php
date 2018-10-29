@@ -68,8 +68,8 @@
 
         <div class="list">
           <p><a href="list.php?projectid=<?php echo $project_id; ?>&amp;listid=<?php echo $data['id']; ?>"><?php echo $data['name']; ?></a></p>
-          <form action="project.php" method="post">
-            <input type="hidden" name="id_list" value="<?php $data['id']; ?>">
+          <form action="project.php?projectid=<?php echo $project_id; ?>" method="post">
+            <input type="hidden" name="id_list" value="<?php echo $data['id']; ?>">
             <input type="submit" name="delete_this_list" value="Delete this list (inactive)">
           </form>
         </div>
@@ -77,12 +77,12 @@
         <?php
 
       } // end of while ($data = $req->fetch() )
-      $req->closeCursor();
 
+      $req->closeCursor();
      ?>
 
       <!-- Form for add a list -->
-      <form class="addList" action="project.php" method="post">
+      <form class="addList" action="project.php?projectid=<?php echo $project_id; ?>" method="post">
       <p>Add a list :</p>
       <label for="name_list">Name of the list :</label><br /><input id="name_list" type="text" name="name_list" value=""><br />
       <input type="hidden" name="this_id_project" value="<?php echo $project_id; ?>">
@@ -96,6 +96,7 @@
       header('Location: ../index.php');
   }
 
+
     // Delete list in the database
     if (isset($_POST['delete_this_list']) && isset($_POST['id_list']) && !empty($_POST['id_list']) ) {
       $id_list_delete = (int)htmlspecialchars($_POST['id_list']);
@@ -106,6 +107,7 @@
       ));
 
       $req->closeCursor();
+      header('Location: project.php?projectid=' . $project_id );
 
     } // end of if (isset($_POST['delete_this_list']) ... )
 
@@ -125,6 +127,7 @@
         ));
 
         $req->closeCursor();
+        header('Location: project.php?projectid=' . $project_id );
 
       }
     } // end of if (isset($_POST['add_list']) )
