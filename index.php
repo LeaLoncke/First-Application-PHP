@@ -51,7 +51,7 @@
           </form>
         </div>
         <?php
-      }
+      } // End of while ($data = $req->fetch() )
       $req->closeCursor();
      ?>
   </div>
