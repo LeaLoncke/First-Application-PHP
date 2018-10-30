@@ -70,7 +70,7 @@
           <p><a href="list.php?projectid=<?php echo $project_id; ?>&amp;listid=<?php echo $data['id']; ?>"><?php echo $data['name']; ?></a></p>
           <form action="project.php?projectid=<?php echo $project_id; ?>" method="post">
             <input type="hidden" name="id_list" value="<?php echo $data['id']; ?>">
-            <input type="submit" name="delete_this_list" value="Delete this list (inactive)">
+            <input type="submit" name="delete_this_list" value="Delete this list">
           </form>
         </div>
 
